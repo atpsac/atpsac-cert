@@ -1,0 +1,56 @@
+
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="card">
+                <div class="card-header text-white bg-primary">Inicio de Sesión</div>
+                <div class="card-body">
+                    <form (ngSubmit)="submit()" #theForm="ngForm">
+                        <div *ngIf="invalidUser" class="alert alert-danger" role="alert">
+                            Usuario y/o contraseña incorrecta 
+                          </div>
+                        <div class="form-group row">
+                            <label for="username"
+                                class="col-sm-4 col-form-label text-right font-weight-bold">Email</label>
+                            <div class="col-sm-6">
+                                <input [(ngModel)]="login.username" #username="ngModel" required name="username"
+                                    type="text"
+                                    [ngClass]="{'is-invalid' : (username.dirty || username.touched)  && username.errors?.required}"
+                                    class="form-control" autocomplete="off" id="username">
+                                <div *ngIf="(username.dirty || username.touched)  && username.errors?.required"
+                                    class="invalid-feedback">
+                                    Ingrese un nombre de usuario válido.
+                                </div>
+                                <div *ngIf="username.valid || (!username.dirty && !username.touched) ">&nbsp;</div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="password"
+                                class="col-sm-4 col-form-label text-right font-weight-bold">Password</label>
+                            <div class="col-sm-6">
+                                <input [(ngModel)]="login.password" #password="ngModel" name="password" required
+                                [ngClass]="{'is-invalid' : (password.dirty || password.touched)  && password.errors?.required}"
+                                    type="password" class="form-control" id="password">
+                                <div
+                                *ngIf="(password.dirty || password.touched)  && password.errors?.required"
+                                class="invalid-feedback">
+                                    Ingrese una contraseña válida.
+                                </div>
+                                <div *ngIf="password.valid || (!password.dirty && !password.touched) ">&nbsp;</div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-8 offset-sm-4">
+                                <button type="submit" class="btn"
+                                [ngClass]="{'btn-primary': (disableButton === false), 'btn-warning': (disableButton === true)}"
+                                    [disabled]="!theForm.form.valid || disableButton">
+                                    <i *ngIf="disableButton" class="fas fa-spin fa-cog"></i>
+                                    INGRESAR</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

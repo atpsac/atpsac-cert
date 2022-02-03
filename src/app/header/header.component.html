@@ -1,0 +1,27 @@
+<nav class="navbarxxx navbar_ navbar-expand-lg navbar-light bg-white navbar-fixed-top">
+    <button (click)="toggleMenu()" type="button" class="navbar-brand"
+        style="border: 0;background-color: transparent;">
+        <i class="fa fa-bars icon"></i>
+    </button>
+    <a class="navbar-brand" href="#">ATP</a>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+        <div class=" dropdown__ navbar-nav">
+
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                <i class="fa fa-user-secret"></i> {{user}}
+            </a>
+            <div class="dropdown-menu dropdown-menu-right___" aria-labelledby="navbarDropdown">
+                <div class="p-3 text-center">
+                    <h4 class="username">{{user}}</h4>
+                    <div class="btn-group" role="group">
+                        <a (click)="logOut()" class="btn btn-light">
+                            <i class="fas fa-sign-out-alt"></i> Salir
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

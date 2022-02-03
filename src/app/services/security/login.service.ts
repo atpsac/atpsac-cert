@@ -1,0 +1,35 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
+import { UserLogin } from 'src/app/entities/security/user-login';
+import {ResponseLogin} from 'src/app/entities/security/response-login'
+import { Router } from '@angular/router';
+import { SessionStorageService } from '../session-storage.service';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class LoginService {
+
+  constructor(protected client: HttpClient,
+              protected router: Router,
+              protected sessionStorage: SessionStorageService) { 
+
+
+  }
+
+  login(login: UserLogin) {
+    return this.client.post<ResponseLogin>(`${environment.baseUrl}/login`, login)
+  }
+
+  logout() {
+    this.sessionStorage.clearSession()
+    this.router.navigate(['/login']);
+  }
+
+  getLogin(): ResponseLogin {
+  return this.sessionStorage.getSession()
+  }
+
+
+}
