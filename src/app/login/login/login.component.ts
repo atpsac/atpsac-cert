@@ -5,6 +5,7 @@ import { SessionStorageService } from 'src/app/services/session-storage.service'
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { Title } from '@angular/platform-browser';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -33,7 +34,18 @@ export class LoginComponent implements OnInit {
   }
 
   submit() {
-    this.disableButton = true
+
+      this.disableButton = true
+      this.loginService.login(this.login).subscribe(e => {
+      console.log(e)
+        this.sessionStorage.setSession(e)
+        this.router.navigate([this.returnUrl]);
+        this.disableButton = false
+      }, (e: HttpErrorResponse) => {
+        this.invalidUser = true
+        this.disableButton = false
+      })
+    
   }
 
 }

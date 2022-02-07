@@ -14,6 +14,7 @@ import {JwtTokenInterceptor} from './services/interceptors/jwt-token-interceptor
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { UtilsModule } from './utils/utils.module';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { SecurityModule } from './security/security.module';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
   ],
   imports: [
     BrowserModule,
+    SecurityModule,
     AppRoutingModule,
     HomeModule,
     LoginModule,

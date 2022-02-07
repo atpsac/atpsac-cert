@@ -23,7 +23,7 @@ export class SidebarComponent implements OnInit {
         {displayName: 'Perfiles', url: '/admin/roles', id: 3}
       ]
     },
-    {displayName: 'Vacío', id: 4, url: ''}
+    // {displayName: 'Vacío', id: 4, url: ''}
   ]
 
   menu$: Observable<Menu[]>

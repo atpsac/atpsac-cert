@@ -3,8 +3,8 @@ export type GrantedAuthority = {authority:string}
 
 export class ResponseLogin {
 
-    jwt:string
-    user: string
+    token:string
+    userName: string
     authorities: GrantedAuthority[]
 
 }

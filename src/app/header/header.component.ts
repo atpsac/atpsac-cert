@@ -9,18 +9,21 @@ import { LoginService } from '../services/security/login.service';
 })
 export class HeaderComponent implements OnInit {
 
-  user: string
+  userName: string
 
-  constructor() { }
+  constructor(protected loginService: LoginService,
+    private toggleMenuService:ToggleMenuService) { }
 
   ngOnInit(): void {
-
+    this.userName = this.loginService.getLogin()?.userName
 
   }
 
   toggleMenu() {
+    this.toggleMenuService.toggleMenu()
   }
 
   logOut() {
+    this.loginService.logout()
   }
 }

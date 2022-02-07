@@ -3,18 +3,18 @@
         style="border: 0;background-color: transparent;">
         <i class="fa fa-bars icon"></i>
     </button>
-    <a class="navbar-brand" href="#">ATP</a>
+    <a class="navbar-brand" href="#">ATP - Certificaciones 2022</a>
 
     <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
         <div class=" dropdown__ navbar-nav">
 
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">
-                <i class="fa fa-user-secret"></i> {{user}}
+                <i class="fa fa-user-secret"></i> {{userName}}
             </a>
             <div class="dropdown-menu dropdown-menu-right___" aria-labelledby="navbarDropdown">
                 <div class="p-3 text-center">
-                    <h4 class="username">{{user}}</h4>
+                    <h4 class="username">{{userName}}</h4>
                     <div class="btn-group" role="group">
                         <a (click)="logOut()" class="btn btn-light">
                             <i class="fas fa-sign-out-alt"></i> Salir

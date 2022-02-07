@@ -19,7 +19,7 @@ export class LoginService {
   }
 
   login(login: UserLogin) {
-    return this.client.post<ResponseLogin>(`${environment.baseUrl}/login`, login)
+    return this.client.post<ResponseLogin>(`${environment.baseUrl}/auth/login`, login)
   }
 
   logout() {

@@ -1,5 +1,5 @@
 export const environment = {
   production: false,
-  baseUrl: '',
+  baseUrl: 'https://atp-cer.herokuapp.com/api',
   appTitle: 'ATP-Certificaciones'
 };
