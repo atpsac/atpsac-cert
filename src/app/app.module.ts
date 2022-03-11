@@ -8,13 +8,17 @@ import {LoginModule} from './login/login.module';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import {SecurityModule} from './security/security.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 import {JwtTokenInterceptor} from './services/interceptors/jwt-token-interceptor'
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { UtilsModule } from './utils/utils.module';
+
+import {SegModule} from './seg/seg.module'
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
-import { SecurityModule } from './security/security.module';
+import { MaintenanceModule } from './maintenance/maintenance.module';
 
 @NgModule({
   declarations: [
@@ -26,10 +30,12 @@ import { SecurityModule } from './security/security.module';
   ],
   imports: [
     BrowserModule,
-    SecurityModule,
     AppRoutingModule,
     HomeModule,
     LoginModule,
+    SegModule,
+    MaintenanceModule,
+    SecurityModule,
     BrowserAnimationsModule,
     NgbModule,
     HttpClientModule,

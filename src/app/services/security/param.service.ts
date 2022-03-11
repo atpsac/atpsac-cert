@@ -24,4 +24,9 @@ export class ParamService {
   threahold(): Observable<any> {
     return this.client.get<any>(`${environment.baseUrl}/security/thresholds/params`)
   }
+  
+  evaluationThreahold(): Observable<any> {
+    return this.client.get<any>(`${environment.baseUrl}/security/evaluation/thresholds/params`)
+  }
+
 }

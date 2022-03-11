@@ -23,7 +23,7 @@ export class SidebarComponent implements OnInit {
         {displayName: 'Perfiles', url: '/admin/roles', id: 3}
       ]
     },
-    // {displayName: 'Vacío', id: 4, url: ''}
+    {displayName: 'Vacío', id: 4, url: ''}
   ]
 
   menu$: Observable<Menu[]>
@@ -31,6 +31,16 @@ export class SidebarComponent implements OnInit {
   constructor(protected menuService: MenuService) { }
 
   ngOnInit(): void {
+
+
+    // this.menuService.getMenu().subscribe((data) => {
+    //   this.menu = data
+    // })
+
+    this.menuService.getMenuJSON().subscribe((data) => {
+      this.menu = data
+    })
+
   }
 
 }

@@ -45,16 +45,17 @@ export class CreateUserComponent implements OnInit {
 
   onSubmit(value: User) {
     
-    // this.disableForm()
-    // this.userService.createUser(value).subscribe(data => {
+    this.disableForm()
+    this.userService.createUser(value).subscribe(data => {
       
-    //   this.enableForm()
-    //   SnackbarHelper.show(this.snackBar, { msg: 'Se creó con éxito', })
-    //   this.activeModal.close(true)
+      this.enableForm()
+      SnackbarHelper.show(this.snackBar, { msg: 'Se creó con éxito', })
+      /** Refresh table */
+      this.activeModal.close(true)
       
-    // }, (error) => {
-    //   this.enableForm()
-    // })
+    }, (error) => {
+      this.enableForm()
+    })
     
   }
 

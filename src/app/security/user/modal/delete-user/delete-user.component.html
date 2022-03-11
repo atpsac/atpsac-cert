@@ -1,4 +1,4 @@
-<div class="modal-header bg-danger">
+<div class="modal-header btn-primary">
     <h4 class="modal-title text-white">ELIMINAR USUARIO:</h4>
     <button (click)="closeModal()" type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
@@ -23,8 +23,8 @@
     </div>
 </div>
 <div class="modal-footer">
-    <button [disabled]="deleting" class="btn btn-light" (click)="closeModal()">CANCELAR</button>
-    <button [disabled]="deleting" *ngIf="deleted === false" class="btn"
+    <button [disabled]="deleting" class="btn btn-success" (click)="closeModal()">CANCELAR</button>
+    <button [disabled]="deleting" *ngIf="deleted === false" class="btn btn-primary"
     [ngClass]="{'btn-dark': (deleting === false), 'btn-warning': (deleting === true)}"
     (click)="deleteUser()">
     <i *ngIf="deleting" class="fas fa-spin fa-cog"></i>

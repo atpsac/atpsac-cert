@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
+
+import {UserService} from 'src/app/services/security/user.service';
+//import { User } from 'src/entities/security/user';
 import { UserLogin } from 'src/app/entities/security/user-login';
 import {ResponseLogin} from 'src/app/entities/security/response-login'
 import { Router } from '@angular/router';
@@ -11,9 +14,7 @@ import { SessionStorageService } from '../session-storage.service';
 })
 export class LoginService {
 
-  constructor(protected client: HttpClient,
-              protected router: Router,
-              protected sessionStorage: SessionStorageService) { 
+  constructor(protected client: HttpClient, protected router: Router, protected sessionStorage: SessionStorageService) { 
 
 
   }
@@ -23,13 +24,14 @@ export class LoginService {
   }
 
   logout() {
+    // remove user from local storage to log user out
     this.sessionStorage.clearSession()
     this.router.navigate(['/login']);
-  }
+}
 
-  getLogin(): ResponseLogin {
+getLogin(): ResponseLogin {
   return this.sessionStorage.getSession()
-  }
+}
 
 
 }

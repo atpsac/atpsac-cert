@@ -20,7 +20,9 @@ export class ServerResponseFormComponent implements OnInit {
 
     if (this.response?.ok !== true)
       this.classCss = 'alert alert-danger'
-      this.message = this.response?.message ?? []
+
+    this.message = this.response?.message ?? []
+//console.log(this.message);
 
     if (typeof this.message === "string")
       this.message = [this.message]

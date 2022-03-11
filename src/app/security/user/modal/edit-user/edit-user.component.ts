@@ -35,13 +35,13 @@ export class EditUserComponent implements OnInit {
 
   ngOnInit(): void {
 
-    // this.userService.getById(this.user).subscribe(data => {
-    //   console.log("cargo editar")
-    //   this.formService.fillForm = data
-    //   this.selectedRols = this.formGroup.get('roleIds').value as number[]
-    //   this.formLoaded = true
+    this.userService.getById(this.user).subscribe(data => {
+      console.log("cargo editar")
+      this.formService.fillForm = data
+      this.selectedRols = this.formGroup.get('roleIds').value as number[]
+      this.formLoaded = true
 
-    // })
+    })
 
     this.formGroup = this.formService.form;
 
@@ -51,17 +51,16 @@ export class EditUserComponent implements OnInit {
     this.activeModal.close($res)
   }
 
-  onSubmit(value: User) {
-//     console.log("enviar")
-// this.disableForm()
-//     value.id = this.user.id
-//     this.userService.editUser(value).subscribe(data => {
-//       SnackbarHelper.show(this.snackBar, { msg: 'Editó con éxito', })
-//       this.enableForm()
-//       this.activeModal.close(true)
-//     }, (error) => {
-//       this.enableForm()
-//     })
+  onSubmit(value: User) {console.log("enviar")
+this.disableForm()
+    value.id = this.user.id
+    this.userService.editUser(value).subscribe(data => {
+      SnackbarHelper.show(this.snackBar, { msg: 'Editó con éxito', })
+      this.enableForm()
+      this.activeModal.close(true)
+    }, (error) => {
+      this.enableForm()
+    })
 
   }
 

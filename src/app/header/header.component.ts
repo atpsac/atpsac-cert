@@ -9,13 +9,13 @@ import { LoginService } from '../services/security/login.service';
 })
 export class HeaderComponent implements OnInit {
 
-  userName: string
+  user: string
 
-  constructor(protected loginService: LoginService,
-    private toggleMenuService:ToggleMenuService) { }
+  constructor(private toggleMenuService:ToggleMenuService, protected loginService: LoginService) { }
 
   ngOnInit(): void {
-    this.userName = this.loginService.getLogin()?.userName
+
+    this.user = this.loginService.getLogin()?.userName
 
   }
 

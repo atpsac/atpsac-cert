@@ -39,7 +39,7 @@ export class AppComponent implements OnInit {
   }
 
 
-  title = 'atp-frontend';
+  title = 'entel-frontend';
 
 
 }

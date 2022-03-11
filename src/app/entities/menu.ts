@@ -1,4 +1,5 @@
 export class Menu {
+
     id: number
     displayName: string
     url: string

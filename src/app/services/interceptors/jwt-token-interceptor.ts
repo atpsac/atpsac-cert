@@ -16,18 +16,24 @@ export class JwtTokenInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
+    //const token: string = 'eyJhbGciOiJIUzI1NiJ9.eyJpZCI6IjEiLCJ1c2VyTmFtZSI6InN1cGVydXNlciIsInN1YiI6IlVzdWFyaW8gU29wb3J0ZSIsImV4cCI6MTU5NTQ3ODE3N30.s8qvU2m6BNWGKvV20vJAhM-ji-9_VDvIe12-volVRUc'
 
     let session: ResponseLogin = this.loginService.getLogin()
 
     if (session) {
       request = request.clone({
         setHeaders: {
-          authorization: `Bearer ${ session.token }`
+          Authorization: `${ session.token }`
         }
       });
     } 
     return next.handle(request).pipe(catchError((error: HttpErrorResponse) => {
       console.log(JSON.stringify(error));
+      
+      /**
+       * Not authorized
+       * Toked expired
+       */
       if (error.status == 403 || error.status == 401) {
         this.loginService.logout()
       }

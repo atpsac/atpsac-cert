@@ -12,7 +12,9 @@ export class SessionStorageService {
   constructor() { }
 
   setSession(login: ResponseLogin) {
+
     localStorage.setItem(this.ITEM_NAME, JSON.stringify(login))
+
   }
 
   getSession(): ResponseLogin {

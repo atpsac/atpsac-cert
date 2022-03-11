@@ -10,6 +10,7 @@ export function confirmValidator(controlName: string, controlConfirmName: string
         } else {
             control.get(controlConfirmName).setErrors({confirm: true})
         }
+
         return null
       }
 

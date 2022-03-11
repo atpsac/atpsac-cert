@@ -15,3 +15,92 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
+
+.btn-primary {
+    color: white;
+    background-color: #045bfc;
+    border-color: #045bfc
+}
+
+.btn-primary:hover {
+    color: white;
+    background-color: #045bfc;
+    border-color: #045bfc
+}
+
+.btn-success {
+    color: white;
+    background-color: #ff6c04;
+    border-color: #ff6c04
+}
+
+.btn-success:hover {
+    color: white;
+    background-color: #ff3d00;
+    border-color: #ff3d00
+}
+/*
+td.mat-cell {
+    /* row padding 
+    padding: 16px 0;
+    /* row border 
+    border-bottom: 2px solid #ff6c04;
+    border-top: 1px solid #ff6c04;
+   }
+   
+   td.mat-cell:first-child {
+     /* row border 
+     border-left: 1px solid #ff6c04;
+   }
+   
+   td.mat-cell:last-child {
+     /* row border 
+     border-right: 2px solid #ff6c04;
+   }
+   
+   table {
+     /* row spacing / margin 
+     border-spacing: 0 8px !important;
+   } 
+*/
+   .mat-cell {
+    min-height: 48px;
+    text-align: center;
+    border-right: 1px solid rgb(138, 135, 135);
+}
+
+.letra-entel{
+color: #0854a4;
+font-weight: bold;
+font-size: 20px;
+font-family:sans-serif;
+}
+
+.letra-cabecera{
+  color: #7c8185;
+  font-weight: bold;
+  font-size: 16px;
+  font-family:sans-serif;
+  }
+
+
+  .color-menu{
+    color: #0854a4; 
+  }
+
+  .color-menu:hover{
+color: #ff6c04;
+  }
+
+  .icon_dash{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 60px;
+    color: #0854a4 ;
+  }
+  .title_dash {
+    font-size: 18px;
+    font-weight: bold;
+    color: #0854a4 ;
+    margin-bottom: 10px;
+  }

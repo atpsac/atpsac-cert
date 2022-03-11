@@ -2,6 +2,12 @@ import { Directive, ElementRef, ViewContainerRef, TemplateRef, Input, OnInit } f
 import { SessionStorageService } from 'src/app/services/session-storage.service';
 
 
+/**
+ * Simple Directive to ckeck if any anthenticated user is Authorized (Inspired by Thymeleaf + Spring Security integration)
+ * @author ManuelCD  2019
+ * 
+ */
+
 @Directive({
   selector: '[authorize]'
 })

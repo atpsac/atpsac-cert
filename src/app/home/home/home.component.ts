@@ -15,13 +15,20 @@ export class HomeComponent implements OnInit {
 
   constructor(protected loginService: LoginService,
     private docTitleService: Title) {
-
     this.user = loginService.getLogin()?.userName
-
-    }
+   }
 
   ngOnInit(): void {
-    this.docTitleService.setTitle('Home - ' + environment.appTitle)
+    this.docTitleService.setTitle('Inicio - ' + environment.appTitle)
   }
+
+  // openMenu() {
+    
+  //   if (this.sidebarContainer.nativeElement.classList.contains('open-sidebar')) {
+  //     this.sidebarContainer.nativeElement.classList.remove('open-sidebar')
+  //   } else {
+  //     this.sidebarContainer.nativeElement.classList.add('open-sidebar')
+  //   }
+  // }
 
 }

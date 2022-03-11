@@ -17,12 +17,12 @@ export class UserInfoComponent implements OnInit {
 
   ngOnInit(): void {
 
-    // this.userService.getById(this.user).subscribe(data => {
+    this.userService.getById(this.user).subscribe(data => {
      
-    //   this.userData = data
+      this.userData = data
       
       
-    // })
+    })
 
   }
 

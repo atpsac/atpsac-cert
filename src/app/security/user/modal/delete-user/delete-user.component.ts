@@ -23,12 +23,13 @@ export class DeleteUserComponent implements OnInit {
   }
 
   deleteUser() {
-// this.deleting=true
-//     this.userService.delete(this.user).subscribe(data => {
-//       console.log(data);
-//       this.deleted = true
-//       this.deleting=false
-//     })
+this.deleting=true
+    this.userService.delete(this.user).subscribe(data => {
+      console.log(data);
+      this.deleted = true
+      this.deleting=false
+      this.closeModal()
+    })
 
   }
 

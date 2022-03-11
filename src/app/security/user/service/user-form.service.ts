@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from 'src/app/entities/security/user';
-// import {Util} from 'src/app/utils/helpers/util'
+import {Util} from 'src/app/utils/helpers/util'
 
 import {confirmValidator} from 'src/app/utils/validators/confirm-validator'
 
@@ -42,7 +42,7 @@ export class UserFormService {
     this.formGroup.get('cellphone').setValue(user.cellphone)
     this.formGroup.get('commentUser').setValue(user.commentUser)
     this.formGroup.get('status').setValue(user.status?'1':'2')
-    // this.formGroup.get('roleIds').setValue(Util.onlyIds(user.roles))
+    this.formGroup.get('roleIds').setValue(Util.onlyIds(user.roles))
 
    }
    

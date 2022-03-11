@@ -1,8 +1,8 @@
 <div class="side-menu">
     <div class="vertical-nav">
         <div class="side-menu-header bg-light">
-            <span class="brand mb-0"><img 
-                style="height: 35px;">
+            <span class="brand mb-0 img-qhatu"><img src="https://play-lh.googleusercontent.com/C-aFQBiMPe1KiEtObNo4aFrbxEdFj0Lqm9Gbe_RDOQpjJHoU5s4zyVW2vYSheOjuM1fL"
+                    style="height: 35px;">
             </span>
         </div>
         <ul class="sidebar-nav">
@@ -10,19 +10,19 @@
             <li *ngFor="let item of menu; let i = index" [class.dropdown]="item.subMenu?.length>0">
                 <a class="" *ngIf="!item.url" [attr.data-toggle]="item.subMenu?.length>0?'collapse':''" [href]="'#collapse-id-' + item.id" aria-expanded="false"
                     >
-                    <i class="far fa-file-word icon"></i>
-                    <span>{{ item.displayName }}</span>
+                    <i class="{{ item.icon }} icon"></i>
+                    <span class="color-menu">{{ item.displayName }}</span>
                 </a>
 
                 <a class="" *ngIf="item.url"  routerLink="{{ item.url }}"
                     >
                     <i class="far fa-file-word icon"></i>
-                    <span>{{ item.displayName }}</span>
+                    <span class="color-menu">{{ item.displayName }}</span>
                 </a>
                 <div *ngIf="item.subMenu?.length>0" class="clearfix collapse" [id]="'collapse-id-' + item.id">
                     <ul class="sidebar-nav">
                         <li *ngFor="let subItem of item.subMenu; let i = index">
-                            <a routerLink="{{ subItem.url }}" ><i class="far fa-file-word icon"></i> <span>{{ subItem.displayName }}</span></a>
+                            <a routerLink="{{ subItem.url }}" ><i class="far fa-file-word icon"></i> <span class="color-menu">{{ subItem.displayName }}</span></a>
                         </li>
                     </ul>
                 </div>

@@ -11,7 +11,13 @@ export class MenuService {
 
   constructor(protected client: HttpClient) { }
 
+  getMenu(): Observable<Menu[]> {
+    return this.client.get<Menu[]>(environment.baseUrl + '/page/menu')
+  }
 
-  
+  getMenuJSON(): Observable<Menu[]> {
+    return this.client.get<Menu[]>('assets/menu.json')
+  }
+
 }
 

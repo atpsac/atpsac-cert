@@ -7,15 +7,15 @@ import { CreateUserComponent } from '../modal/create-user/create-user.component'
 import { UserInfoComponent } from '../modal/user-info/user-info.component';
 import { EditUserComponent } from '../modal/edit-user/edit-user.component';
 import { DeleteUserComponent } from '../modal/delete-user/delete-user.component';
-// import { PaginatedDataSource } from 'src/app/utils/paginator/paginated-data-source';
+import { PaginatedDataSource } from 'src/app/utils/paginator/paginated-data-source';
 import { MatPaginator } from '@angular/material/paginator';
 
 import { User } from '../../../entities/security/user';
-import {UserService} from '../../../services/security/user.service'
-// import { PageRequest } from 'src/app/utils/paginator/page-utils';
-// import { CustomOverlayService } from 'src/app/services/overlay/custom-overlay.service';
-// import { Util } from 'src/app/utils/helpers/util';
-// import { environment } from 'src/environments/environment';
+import { UserService } from '../../../services/security/user.service'
+import { PageRequest } from 'src/app/utils/paginator/page-utils';
+import { CustomOverlayService } from 'src/app/services/overlay/custom-overlay.service';
+import { Util } from 'src/app/utils/helpers/util';
+import { environment } from 'src/environments/environment';
 import { Title } from '@angular/platform-browser';
 
 const ELEMENT_DATA = [
@@ -35,115 +35,115 @@ const ELEMENT_DATA = [
 })
 export class UserListComponent implements OnInit, AfterViewInit {
 
-  displayedColumns: string[] = ['username', 'fullname', 'email', 'cellphone', 'createdAt', 'status', 'options'];
-  // dataSource: PaginatedDataSource<User>
 
-  // @ViewChild(MatPaginator) paginator: MatPaginator;
-  // @ViewChild(MatTable, { static: false, read: ElementRef }) table_: ElementRef;
+  listUser: User [] = [
+    // {UserId: 1, UserName: 'UserName', Email: 'Emsasaail', PasswordHash: 'PasswordHasasash', PhoneNumber: 'PhonesasaNumber', CreateDate: 'CreasasateDate' }
+    
+  ];
+
+  displayedColumns: string[] = ['UserId','UserName', 'Email', 'PasswordHash', 'PhoneNumber', 'CreateDate', 'options'];
+  dataSource = new MatTableDataSource(this.listUser);
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
 
   dateRange = new FormGroup({
     start: new FormControl(),
     end: new FormControl()
   });
 
-  constructor(private modalService: NgbModal, 
+  constructor(private modalService: NgbModal,
     private userService: UserService,
-    // public overlay: CustomOverlayService,
+    public overlay: CustomOverlayService,
     private docTitleService: Title) { }
 
   ngOnInit(): void {
-  //   this.docTitleService.setTitle('Usuarios - ' + environment.appTitle)
-  //   this.dataSource = new PaginatedDataSource<User>(
-  //     (request: PageRequest<User>) => this.userService.getAll(request),
-  //     { field: 'id', order: 'desc' }, 10
-  //   )    
+    this.docTitleService.setTitle('Usuarios - ' + environment.appTitle)
+    this.userService.getAllUser2().subscribe( resp => {
+      this.dataSource = resp['result'];
+      console.log(resp['result'])
+    })
   }
 
-  ngAfterViewInit(): void {
-    
-  //   this.overlay.CustomCreate(this.table_.nativeElement)
 
-  //   this.dataSource.loading$.subscribe((bol) => {
-  //     if (bol) {
-  //       this.overlay.openOverlay()
-  //     } else {
-  //       this.overlay?.closeOverlay()
-  //     }
-  //     console.log('loading: ' + bol);
-      
-  //   })
+  ngAfterViewInit(){
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
-  // export() {
-  //   this.userService
-  //   .export(this.dataSource.lastFilter)
-  //   .subscribe(({data}) => Util.download(data, 'usuarios'));
+ 
 
-  // }
+  export() {
 
-  // openCreate(): void {
+    // this.userService
+    //   .export(this.dataSource.lastFilter)
+    //   .subscribe(({ data }) => Util.download(data, 'usuarios'));
 
-  //   const modalRef = this.modalService.open(CreateUserComponent, { size: 'lg', backdrop: 'static' });
+  }
 
-  //   modalRef.result.then(res => {
-  //     this.dataSource.updateTable(0)
-  //   })
-  // }
+  openCreate(): void {
 
-  // openInfo(user: User) {
-  //   console.log(user);
-  //   const modalInfo = this.modalService.open(UserInfoComponent, {size: 'lg', backdrop: 'static'})
-  //   modalInfo.componentInstance.user = user
-  //   modalInfo.result.then(res => {
-      
-  //   })
+    const modalRef = this.modalService.open(CreateUserComponent, { size: 'lg', backdrop: 'static' });
 
-  // }
+    modalRef.result.then(res => {
+      // this.dataSource.updateTable(0)
+    })
+  }
 
-  // openEdit(user: User) {
-    
-  //   const modalEdit = this.modalService.open(EditUserComponent, {size: 'lg', backdrop: 'static'})
-  //   modalEdit.componentInstance.user = user
-  //   modalEdit.result.then(res => {
-  //     this.dataSource.updateTable(this.paginator.pageIndex)
-  //   })
+  openInfo(user: User) {
+    console.log(user);
+    const modalInfo = this.modalService.open(UserInfoComponent, { size: 'lg', backdrop: 'static' })
+    modalInfo.componentInstance.user = user
+    modalInfo.result.then(res => {
+
+    })
+
+  }
+
+  openEdit(user: User) {
+
+    const modalEdit = this.modalService.open(EditUserComponent, { size: 'lg', backdrop: 'static' })
+    modalEdit.componentInstance.user = user
+    modalEdit.result.then(res => {
+      // this.dataSource.updateTable(this.paginator.pageIndex)
+    })
 
 
-  // }
+  }
 
-  // openDelete(user: User) {
+  openDelete(user: User) {
 
-  //   const deleteModal = this.modalService.open(DeleteUserComponent, {size: 'lg', backdrop: 'static'})
-  //   deleteModal.componentInstance.user = user
-  //   deleteModal.result.then(res => {
-  //     this.dataSource.updateTable(this.paginator.pageIndex)
-  //   })
-  // }
+    const deleteModal = this.modalService.open(DeleteUserComponent, { size: 'lg', backdrop: 'static' })
+    deleteModal.componentInstance.user = user
+    deleteModal.result.then(res => {
+      // this.dataSource.updateTable(this.paginator.pageIndex)
+    })
+  }
 
-  // search() {
+  search() {
 
-  //   if (this.dateRange.valid) {
-      
-  //     let start = new Date(Date.parse(this.dateRange.get('start').value))
-  //     let end = new Date(Date.parse(this.dateRange.get('end').value))
-  //     //------------------------------------------------------------------
+    if (this.dateRange.valid) {
 
-  //     let startStr = new Intl.DateTimeFormat('es-PE',{month:'2-digit',day:'2-digit', year:'numeric'}).format(start) + ' 00:00:00'
-  //     let endStr = new Intl.DateTimeFormat('es-PE',{month:'2-digit',day:'2-digit', year:'numeric'}).format(end) + ' 23:59:59'
+      let start = new Date(Date.parse(this.dateRange.get('start').value))
+      let end = new Date(Date.parse(this.dateRange.get('end').value))
+      //------------------------------------------------------------------
 
-  //     let filters = [
-  //       { field: 'createdAt', value: startStr, operator: 'gte' },
-  //       { field: 'createdAt', value: endStr, operator: 'lte' }
-  //     ]
+      let startStr = new Intl.DateTimeFormat('es-PE', { month: '2-digit', day: '2-digit', year: 'numeric' }).format(start) + ' 00:00:00'
+      let endStr = new Intl.DateTimeFormat('es-PE', { month: '2-digit', day: '2-digit', year: 'numeric' }).format(end) + ' 23:59:59'
 
-  //     this.dataSource.filterInput(filters)
+      let filters = [
+        { field: 'createdAt', value: startStr, operator: 'gte' },
+        { field: 'createdAt', value: endStr, operator: 'lte' }
+      ]
 
-  //   } else {
-  //     console.log('Not valid');
+      // this.dataSource.filterInput(filters)
 
-  //   }
+    } else {
+      console.log('Not valid');
 
-  // }
+    }
+
+  }
 
 
 }

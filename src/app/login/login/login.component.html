@@ -1,20 +1,19 @@
-
-
+<!-- As a heading -->
 <div class="app-body">
 
 <div class="container">
     <div class="row justify-content-md-center">
         <div class="col-md-8 col-md-offset-2">
             <div class="card">
-                <div class="card-header text-white bg-primary">Inicio de Sesión - ATP Certificaciones</div>
+                <div class="card-header text-white btn-primary">Inicio de Sesión - ATP Certificaciones 2022</div>
                 <div class="card-body">
                     <form (ngSubmit)="submit()" #theForm="ngForm">
                         <div *ngIf="invalidUser" class="alert alert-danger" role="alert">
                             Usuario y/o contraseña incorrecta 
                           </div>
                         <div class="form-group row">
-                            <label for="userName"
-                                class="col-sm-4 col-form-label text-right font-weight-bold">Usuario</label>
+                            <label for="username"
+                                class="col-sm-4 col-form-label text-right font-weight-bold">Correo electronico</label>
                             <div class="col-sm-6">
                                 <input [(ngModel)]="login.userName" #userName="ngModel" required name="userName"
                                     type="text"
@@ -43,12 +42,12 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <div class="col-sm-8 offset-sm-4">
-                                <button type="submit" class="btn"
-                                [ngClass]="{'btn-primary': (disableButton === false), 'btn-warning': (disableButton === true)}"
+                            <div class="col-sm-4 offset-sm-8">
+                                <button type="submit" class="btn btn-primary"
+                                [ngClass]="{'btn-primary': (disableButton === false), 'btn-success': (disableButton === true)}"
                                     [disabled]="!theForm.form.valid || disableButton">
                                     <i *ngIf="disableButton" class="fas fa-spin fa-cog"></i>
-                                    Ingresar</button>
+                                    INGRESAR</button>
                             </div>
                         </div>
                     </form>
@@ -57,5 +56,6 @@
         </div>
     </div>
 </div>
+
 
 </div>
